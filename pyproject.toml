@@ -3,16 +3,32 @@ name = "delivery-eta-prediction"
 version = "0.1.0"
 description = "Delivery ETA prediction using gradient boosted tree models"
 readme = "README.md"
-requires-python = ">=3.12"
+
+# IMPORTANT: restrict Python to avoid uv resolving 3.14
+requires-python = ">=3.10,<3.13"
+
 dependencies = [
-    "ipykernel>=7.2.0",
-    "jupyter>=1.1.1",
-    "lightgbm>=4.6.0",
-    "matplotlib>=3.10.8",
-    "numpy>=2.4.4",
-    "pandas>=3.0.2",
-    "scikit-learn>=1.8.0",
-    "seaborn>=0.13.2",
-    "shap>=0.51.0",
-    "xgboost>=3.2.0",
+    # Core
+    "pandas==2.2.2",
+    "numpy>=1.26,<2",
+
+    # Parquet ecosystem
+    "pyarrow==15.0.2",
+    "fastparquet>=2024.2.0",
+
+    # ML
+    "scikit-learn>=1.4,<1.6",
+    "xgboost>=2.0,<3.0",
+    "lightgbm>=4.0,<4.5",
+
+    # Explainability (compatible with numpy 1.x)
+    "shap<0.50",
+
+    # Viz
+    "matplotlib>=3.8,<3.10",
+    "seaborn>=0.13,<0.14",
+
+    # Dev
+    "ipykernel",
+    "jupyter"
 ]
